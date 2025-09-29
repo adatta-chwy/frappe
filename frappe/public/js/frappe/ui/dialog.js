@@ -13,7 +13,7 @@ frappe.ui.Dialog = class Dialog extends frappe.ui.FieldGroup {
 		this.display = false;
 		this.is_dialog = true;
 
-		$.extend(this, { animate: true, size: null }, opts);
+		$.extend(this, { animate: true, size: null,centered: false }, opts);
 		this.make();
 	}
 
@@ -31,6 +31,7 @@ frappe.ui.Dialog = class Dialog extends frappe.ui.FieldGroup {
 		if (!this.size) this.set_modal_size();
 
 		this.wrapper = this.$wrapper.find(".modal-dialog").get(0);
+		if (this.centered) $(this.wrapper).addClass("modal-dialog-centered");
 		if (this.size == "small") $(this.wrapper).addClass("modal-sm");
 		else if (this.size == "large") $(this.wrapper).addClass("modal-lg");
 		else if (this.size == "extra-large") $(this.wrapper).addClass("modal-xl");
